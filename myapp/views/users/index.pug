@@ -1,0 +1,13 @@
+h1 Users
+
+a(href="/users/create") Add Movie
+form(action="/users/search", method="GET")
+    input(type="text", movie="q")
+    button Search
+
+ul
+    each user in users
+        li
+            span= user.movie
+            span &nbsp;
+            a(href='/users/' + user.id) View
