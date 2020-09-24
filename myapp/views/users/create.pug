@@ -1,7 +1,21 @@
-h1 Create user
 
-form(action="/users/create", method="POST")
-    label Movie
-    input(name="movie", type="text")
+extends ../layouts/common
 
-    button Create
+block content
+    h1 Create user
+
+    if errors
+        each error in errors
+            .alert.alert-danger= error
+
+    form(action="/users/create", method="POST")
+        .form-group
+         label(for="movie") Movie
+         input#movie.form-control(name="movie", type="text", value=values ?
+         values.movie : "")
+         .form-group
+         label(for="day") Day
+         input#day.form-control(name="day", type="date", value=values ? 
+         values.day : "")
+
+        button.btn.btn-primary Create
